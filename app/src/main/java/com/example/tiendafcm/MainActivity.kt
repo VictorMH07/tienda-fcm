@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MyFirebaseMessagingService.crearcanal(this)
+        MyFirebaseMessagingService.crearCanal(this)
         pedirPermisoNotificaciones()
         procesarIntent(intent)
 
@@ -93,7 +93,7 @@ fun TiendaScreen() {
     val productos = listOf("Audifonos Bluetooth", "Teclado mecánico", "Mouse inalambrico")
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize().statusBarsPadding().padding(16.pd),
+        modifier = Modifier.fillMaxSize().statusBarsPadding().padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         item {
@@ -112,7 +112,7 @@ fun TiendaScreen() {
         item {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("Recibir ofertas (tema: ofertas)", modifier = Modifier.weight(1f))
-                Switch(checked = Ofertas, onCheckedChange = { activo ->
+                Switch(checked = ofertas, onCheckedChange = { activo ->
                     ofertas = activo
                     val fm = FirebaseMessaging.getInstance()
                     if (activo) fm.subscribeToTopic("ofertas").addOnSuccessListener {
